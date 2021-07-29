@@ -1,0 +1,80 @@
+# Settings for LIBRARY BUILD ONLY: cheyenne.intel
+#
+# Flags common to all
+RM         = rm -f
+AR         = ar
+ARFLAGS    =
+FC         = mpif90
+FCserial   = ifort
+CC         = icc
+CPP        = cpp
+
+ifeq ($(OPENMP),1)
+  OMPFLAGS= -qopenmp
+  OMPCPPFLAGS= -DOPENMP
+else
+  OMPFLAGS=
+  OMPCPPFLAGS=
+endif
+
+# Number of parallel tasks for gmake
+GMAKEMINUSJ = -j24
+
+# Flags for bacio library
+BACIO_FFLAGS  = $(OMPFLAGS) -O3 -xHOST -traceback -fPIC
+BACIO_CFLAGS  = $(OMPFLAGS) -O3 -DUNDERSCORE -DLINUX -fPIC
+
+# Flags for g2 library
+G2_FFLAGS  = $(OMPFLAGS) -O3 -c -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+G2_CFLAGS  = $(OMPFLAGS) -O3 -I${JASPER_INC} -I${PNG_INC} -DLINUX
+ 
+# Flags for g2tmpl library
+G2TMPL_FFLAGS  = $(OMPFLAGS) -O3 -c -free -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+G2TMPL_CFLAGS  = $(OMPFLAGS) -O3 -c -DUNDERSCORE
+
+# Flags for gfsio library
+GFSIO_FFLAGS  = $(OMPFLAGS) -O3 -c -free -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+GFSIO_ARFLAGS = -rv
+
+# Flags for ip library
+IP_FFLAGS     = $(OMPFLAGS) -free -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays -O3 -c
+IP_FPPFLAGS   = -fpp -DLSIZE=4 -save-temps
+IP_ARFLAGS    = -ruv
+
+# Flags for landsfcutil library
+LAND_FFLAGS   = $(OMPFLAGS) -r8 -O3 -fp-model strict -ip -FR -I. -module . -c
+LAND_ARFLAGS  = crvs
+
+# Flags for nemsio library
+NEMSIO_FFLAGS  = $(OMPFLAGS) -O -g -fPIC
+NEMSIO_ARFLAGS = -rvu
+
+# Flags for nemsiogfs library
+NEMSIOGFS_FFLAGS  = $(OMPFLAGS) -O3 -FR        
+
+# Flags for sfcio library
+SFCIO_FFLAGS = -O3 -traceback -axCore-AVX2 -convert big_endian -assume byterecl -I$(INCMOD) -FR
+SFCIO_ARFLAGS = -ruv
+
+# Flags for sigio library
+SIGIO_FFLAGS  = $(OMPFLAGS) -O0 -g -xHOST -traceback -free -convert big_endian -assume byterecl -c -fPIC
+SIGIO_ARFLAGS = crvs
+
+# Flags for sp library
+SP_FFLAGS  = $(OMPFLAGS) -O3 -auto -i4 -r8 -convert big_endian -assume byterecl -fp-model strict -fpp -DLINUX -fPIC $(OMPCPPFLAGS)
+SP_ARFLAGS = -ruv
+
+# Flags for w3emc library
+W3EMC_FFLAGS = $(OMPFLAGS) -O2 -g -r8 -traceback -fixed -c -fPIC
+W3EMC_4_FFLAGS = $(OMPFLAGS) -O3 -c -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+W3EMC_ARFLAGS = ruv
+
+# Flags for w3nco library
+W3NCO_FFLAGS  = $(OMPFLAGS) -O0 -g -r8 -fixed -fPIC
+W3NCO_4_FFLAGS  = $(OMPFLAGS) -O3 -c -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+W3NCO_CFLAGS  = $(OMPFLAGS) -O0 -DLINUX
+W3NCO_ARFLAGS = -ruv
+
+# Flags for wrfio library
+WRFIO_FFLAGS   = $(OMPFLAGS) -O3 -free -fp-model source -ftz -assume byterecl -convert big_endian -heap-arrays
+WRFIO_ARFLAGS  = ru
