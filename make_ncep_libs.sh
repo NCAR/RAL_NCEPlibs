@@ -191,12 +191,12 @@ if [ "$APP" == "upp" ] || [ "$APP" == "all" ]; then
       export NETCDF_INC="$NETCDF/include"
     fi
   fi
-  if [ ! -d "$NETCDF/lib" ] || [ ! -d "$NETCDF/include" ]; then
-    echo "ERROR: Check your NETCDF location; one or both of these paths does not exist:"
-    echo $NETCDF/lib
-    echo $NETCDF/include
-    exit 2
-  fi
+# if [ ! -d "$NETCDF/lib" ] || [ ! -d "$NETCDF/include" ]; then
+#   echo "ERROR: Check your NETCDF location; one or both of these paths does not exist:"
+#   echo $NETCDF/lib
+#   echo $NETCDF/include
+#   exit 2
+# fi
 fi
 
 echo "NETCDF_INC=$NETCDF_INC"
