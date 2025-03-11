@@ -48,3 +48,19 @@ It is recommended to install the NCEPlibs into their own directory, which must b
 The include files and libraries are installed to NCEPLIBS_DIR/{include,lib}
 
 To remove the installed libraries, simply delete the contents of NCEPLIBS_DIR.
+
+#---- ATEC ----
+Required environment variables
+- $NETCDF or ($NETCDF_LIB and $NETCDF_INC)
+- $JASPER_INC
+- $PNG_INC
+- CC, F90 and MPIF90 from macros.make.<OS/HPC>.<compiler>
+
+# smac-c5
+export FC=mpiifort
+export FCserial=ifort
+export CC=icx
+
+export NETCDF=/atec/model/atec4dwx/opt/third_party/intel/netcdf-c-4.9.0_fortran-4.5.4
+export JASPER_INC=/usr/include/jasper
+export PNG_INC=/usr/include
