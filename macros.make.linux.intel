@@ -6,7 +6,9 @@ AR         = ar
 ARFLAGS    =
 FC         = mpiifort
 FCserial   = ifort
-CC         = icc
+#CC         = icc
+CC         = icx
+CPP        = cpp
 
 ifeq ($(OPENMP),1)
   OMPFLAGS= -qopenmp
