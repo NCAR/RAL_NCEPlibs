@@ -22,6 +22,7 @@ Jim Tuccillo August 1999
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
+#include <ctime>
 #include <sys/utsname.h>
 #ifdef _AIX
 #include <sys/proc.h>   
@@ -256,7 +257,12 @@ void cputim (usr, sys)
       tms Time_buffer;
       int ret;
 
-      ret = times (&Time_buffer);
+      //ret = times (&Time_buffer);
+      ret = 1;
+      Time_buffer.tms_utime = 0;
+      Time_buffer.tms_stime = 0;
+      Time_buffer.tms_cutime = 0;
+      Time_buffer.tms_cstime = 0;
 
       real = ((double) ret) * 0.01;
 
