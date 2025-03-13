@@ -22,7 +22,6 @@ Jim Tuccillo August 1999
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
-#include <ctime>
 #include <sys/utsname.h>
 #ifdef _AIX
 #include <sys/proc.h>   
