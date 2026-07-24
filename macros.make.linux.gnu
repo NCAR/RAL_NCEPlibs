@@ -21,7 +21,7 @@ endif
 GMAKEMINUSJ = -j24
 
 # Flags for bacio library
-BACIO_FFLAGS  = $(OMPFLAGS) -O3 -fbacktrace -fPIC
+BACIO_FFLAGS  = $(OMPFLAGS) -O3 -fbacktrace -fPIC -fallow-argument-mismatch
 BACIO_CFLAGS  = $(OMPFLAGS) -O3 -DUNDERSCORE -DLINUX -fPIC
 
 # Flags for g2 library
@@ -42,7 +42,7 @@ IP_FPPFLAGS   = -cpp -DLSIZE=4
 IP_ARFLAGS    = -ruv
 
 # Flags for landsfcutil library
-LAND_FFLAGS   = $(OMPFLAGS) -fdefault-real-8  -O3 -ffree-form -c
+LAND_FFLAGS   = $(OMPFLAGS) -fdefault-real-8  -O3 -ffree-form -fallow-argument-mismatch -c
 LAND_ARFLAGS  = crvs
 
 # Flags for nemsio library
