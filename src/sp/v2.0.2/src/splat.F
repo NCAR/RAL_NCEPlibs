@@ -191,7 +191,7 @@ C  EQUALLY-SPACED LATITUDES EXCLUDING POLES
         CALL DGES(AWORK,JHE,JHO,IPVT,BWORK,J0)
 #endif
 #if LINUX
-        call ludcmp(awork,jho,jhe,ipvt,d)
+        call ludcmp(awork,jho,jhe,ipvt)
         call lubksb(awork,jho,jhe,ipvt,bwork)
 #endif
         WLAT(1)=0.
